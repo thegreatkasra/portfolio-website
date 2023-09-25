@@ -29,3 +29,5 @@ def index(request):
         form = ContactForm()
     return render(request, 'index.html', {'form': form} )
 
+def full_stack(request):
+    return render(request,'cer/full-stack.html')
