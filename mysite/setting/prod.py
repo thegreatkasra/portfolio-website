@@ -10,7 +10,17 @@ DEBUG = False
 ALLOWED_HOSTS = ["kasratorabi.com","www.kasratorabi.com"]
 
 #sites_id framework for SEO:
-SITE_ID = 2
+SITE_ID = 1
+
+
+
+#Robot cnfigurations:
+ROBOTS = {
+    "User-agent": "*",
+    "Disallow": ["/private/", "/admin/","http://kasratorabi.com/admin"],
+    "Allow": ["/public/"],
+    "Crawl-delay": 5,
+}
 
 # Application definition
 INSTALLED_APPS = [

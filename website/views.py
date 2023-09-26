@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.utils import timezone
 from website.models import Post
-
+from django.shortcuts import render ,get_object_or_404
 
 def index(request):
     current_time = timezone.now()
@@ -34,6 +34,16 @@ def index(request):
         form = ContactForm()
     context = {'posts': posts , 'form': form}
     return render(request, 'index.html', context)
+
+def single(request, pid):
+    current_time = timezone.now() 
+    all_posts = Post.objects.all()
+    post = get_object_or_404(all_posts, pk=pid, status=1 ,published_date__lte=current_time)
+    context = {
+           'post': post,
+       }
+    return render(request,'index.html',context)
+
 
 
 def full_stack(request):

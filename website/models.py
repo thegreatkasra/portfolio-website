@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse  
+from django.db import models
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
@@ -29,3 +31,7 @@ class Post(models.Model):
         ordering = ['created_date']
     def __str__(self):
         return self.title
+    
+        #sitemap absolute settings
+    def get_absolute_url(self):
+        return reverse('website:single', kwargs={'pid': self.id})

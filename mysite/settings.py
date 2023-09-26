@@ -22,19 +22,6 @@ MULTI_CAPTCHA_ADMIN = {
 
 
 
-
-#Robot cnfigurations:
-ROBOTS = {
-    "User-agent": "*",
-    "Disallow": ["/private/", "/admin/","http://kasratorabi.com/admin"],
-    "Allow": ["/public/"],
-    "Crawl-delay": 5,
-}
-
-
-
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

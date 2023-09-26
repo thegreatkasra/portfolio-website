@@ -7,8 +7,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-SITE_ID = 1
-SITE_DOMAIN = 'kasratorabi.com'
+SITE_ID = 2
+
+
+#Robot cnfigurations:
+ROBOTS = {
+    "User-agent": "*",
+    "Disallow": ["/private/", "/admin/","http://kasratorabi.com/admin"],
+    "Allow": ["/public/"],
+    "Crawl-delay": 5,
+}
 
 
 INSTALLED_APPS = [

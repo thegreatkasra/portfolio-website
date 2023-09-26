@@ -9,4 +9,5 @@ urlpatterns = [
     path('certification_python',python , name='python'),
     path('certification_mcsa',mcsa , name='mcsa'),
     path('certification_mcitp',mcitp , name='mcitp'),
+    path('<int:pid>',single, name='single'),
 ]
