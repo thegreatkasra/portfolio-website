@@ -16,8 +16,8 @@ class Contact(models.Model):
 
 
 class Post(models.Model):
-    pdf = models.FileField(null=True , upload_to='blog/pdf/')
-    image = models.ImageField(upload_to='blog/')
+    pdf = models.FileField(null=True , upload_to='pdf/')
+    image = models.ImageField(upload_to='blog/', default='blog/02.jpg')
     title = models.CharField(max_length=255)
     counted_views = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
