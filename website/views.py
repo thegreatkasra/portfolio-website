@@ -29,5 +29,12 @@ def index(request):
         form = ContactForm()
     return render(request, 'index.html', {'form': form} )
 
+
 def full_stack(request):
     return render(request,'cer/full-stack.html')
+def python(request):
+    return render(request,'cer/python.html')
+def mcsa(request):
+    return render(request,'cer/mcsa.html')
+def mcitp(request):
+    return render(request,'cer/mcitp.html')
