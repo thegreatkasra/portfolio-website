@@ -174,18 +174,19 @@
                         <!-- portfolio_container -->
                         <div class="no-padding portfolio_container clearfix" data-aos="fade-up">
                             <!-- single work -->
+                            {% for post in posts %}
                             <div class="col-md-4 col-sm-6 resume ">
-                                <a href="{% static 'pdf/project1.pdf' %}" class="portfolio_item"> <img
-                                        src="{% static 'img/portfolio/01.jpg' %}" alt="resume" class="img-responsive" />
+                                <a href="{{ post.pdf.url }}" class="portfolio_item"> 
+                                    <img src="{{ post.image.url }}" alt="resume" class="img-responsive" />
                                     <div class="portfolio_item_hover">
                                         <div class="portfolio-border clearfix">
-                                            <div class="item_info"> <span>Smartworks academy</span> <em>Advertising /
-                                                educational</em><em>Download pdf</em> </div>
+                                            <div class="item_info"> <span>{{post.title}}</span> <em></em><em>Download pdf</em> </div>
                                         </div>
 
                                     </div>
                                 </a>
                             </div>
+                            {% endfor %}
                             <!-- end single work -->
                         {% for _ in "12345678"|make_list %}
                             <!-- single work -->

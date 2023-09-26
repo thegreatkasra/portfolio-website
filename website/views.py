@@ -2,14 +2,19 @@ from django.shortcuts import render
 from website.forms import ContactForm 
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.utils import timezone
+from website.models import Post
+
 
 def index(request):
+    current_time = timezone.now()
+    posts = Post.objects.filter(published_date__lte=current_time, status=1).order_by('-published_date')
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             messages.add_message(request , messages.SUCCESS, 'Successfull !') #success message
-            #return JsonResponse({'success': True})
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             sender = form.cleaned_data['sender']
@@ -24,10 +29,11 @@ def index(request):
 
         else:           
             messages.add_message(request,messages.ERROR, 'ERROR! Try again carefully!') #error message
-            #return JsonResponse({'success': False})
+
     else:
         form = ContactForm()
-    return render(request, 'index.html', {'form': form} )
+    context = {'posts': posts , 'form': form}
+    return render(request, 'index.html', context)
 
 
 def full_stack(request):
